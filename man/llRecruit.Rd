@@ -75,6 +75,8 @@ Shane A. Richards (shane.richards@csiro.au)
 \examples{
 guess <- c(3.0, 3.0, 0.2, 0.0, 0.03, 0.1)
 ll <- llRecruit(guess) # log-likelihood of the model
+
+# find the maximum-likelihood parameter estimates
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
