@@ -1,6 +1,6 @@
 Package: crrecruit
 Type: Package
-Title: Functionality for inferring recruitment from capture-recapture data
+Title: Infer recruitment from capture-recapture data
 Version: 0.1.0
 Author: Shane A. Richards
 Maintainer: Shane A. Richards <shane.richards@csiro.au>
