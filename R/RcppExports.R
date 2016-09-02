@@ -17,7 +17,3 @@ ExpectedFirstCapture <- function(params) {
     .Call('crrecruit_ExpectedFirstCapture', PACKAGE = 'crrecruit', params)
 }
 
-rcpp_hello <- function() {
-    .Call('crrecruit_rcpp_hello', PACKAGE = 'crrecruit')
-}
-

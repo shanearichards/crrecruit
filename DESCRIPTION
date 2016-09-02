@@ -1,13 +1,13 @@
 Package: crrecruit
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functionality for inferring recruitment from capture-recapture data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Shane A. Richards
+Maintainer: Shane A. Richards <shane.richards@csiro.au>
+Description: Provides the log-likelihood of the recruitment model given capture-recapture data, which can be used to find maximum-likelihood paremeter estimates. Also provides functions for predicting expected catches and the probability an animal is not seen during the survey.
+License: MIT
 LazyData: TRUE
-Imports: 
+Imports:
     Rcpp (>= 0.12.5)
-LinkingTo: 
+LinkingTo:
     Rcpp
