@@ -7,7 +7,7 @@ Returns the log-likelihood of the recruitment model
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-A function that returns the log-likelihood of the model of recruitment, survival and catchability, given capture-recapture data. Model parameters are provided in a vector. Capture-recapture data must be stored in specific-named global variables (see Details).
+A function that returns the log-likelihood of the model of recruitment, survival and catchability, given capture-recapture data. Model parameters are provided in the function's single argument, which is a vector. Capture-recapture data must be stored in specific-named global variables (see Details).
 }
 \usage{
 llRecruit(params)
