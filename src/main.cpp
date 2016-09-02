@@ -1,5 +1,5 @@
 // This file contains three C++ functions for hindcasting CR data
-// Compile using Rcpp:sourceCpp('Main.cpp')
+// Note that emergence and recruitment are interchangeable
 
 // double llRecruit(NumericVector params)
 // double PrNotDetect(NumericVector params)
