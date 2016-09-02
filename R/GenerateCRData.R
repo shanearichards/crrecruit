@@ -2,8 +2,8 @@
 GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0, beta.1) {
   last.sample.day <- max(T) # as a minimum set to the last observation day
   J <- length(E)            # sampling events
-  T.F <- min(T) - 14        # earliest day of emergence
-  T.L <- max(T)             # latest day of emergence
+  T.F <- min(T) - 14        # earliest day of recruitment
+  T.L <- max(T)             # latest day of recruitment
   Y.days <- last.sample.day - T.F + 1
   Y.t <- T.F:last.sample.day
 
@@ -11,7 +11,7 @@ GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0
   recruit.day <- seq(from = T.F, to = T.L, by = 1)
   u.True <- exp(-0.5*((recruit.day - t.bar)/sigma)^2)
   u.True <- u.True / sum(u.True)
-  U <- cumsum(u.True) # cumulative emergence distribution
+  U <- cumsum(u.True) # cumulative recruitment distribution
 
   # calculate the cumulative mortality curve
   age <- 0:Y.days
@@ -29,7 +29,7 @@ GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0
   day.died    <- rep(0, N)
   longevity   <- rep(0, N)
   for (i in 1:N) {
-    day.recruited[i] <- sum(r.1[i] > U) + T.F # emergence day
+    day.recruited[i] <- sum(r.1[i] > U) + T.F # recruitment day
     longevity[i] <- sum(r.2[i] >= pr.dead) - 1 # whole days alive
     day.died[i] <- day.recruited[i] + longevity[i] # death day
   }
@@ -45,7 +45,7 @@ GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0
     }
   }
 
-  # calculate the number of animals catchable each day
+  # calculate the number of catchable animals each day
   N.catchable <- rep(0,Y.days)
   for (j in 1:Y.days) {
     N.catchable[j] <- sum(Y[ ,j])
@@ -55,9 +55,9 @@ GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0
   N.catchable.obs <- rep(0,Y.days)
   for (j in 1:Y.days) {
     if (Y.t[j] %in% T) { # is this a survey day?
-      N.catchable.obs[j] <- sum(Y[ ,j]) # keep the data
+      N.catchable.obs[j] <- sum(Y[ ,j]) # yes, keep the data
     } else {
-      N.catchable.obs[j] <- NA # remove the data for this day
+      N.catchable.obs[j] <- NA # no, remove the data for this day
     }
   }
   N.catchable.obs <- N.catchable.obs[!is.na(N.catchable.obs)] # rm NAs
@@ -97,7 +97,7 @@ GenerateCRData <- function(T, E, N, t.bar, sigma, alpha.0, alpha.1 = 0.0, beta.0
 
   I <- dim(y)[1] # number of animals marked
 
-  # generate first and last vectors for fitting
+  # generate first and last sampling event vectors needed for fitting
   f <- rep(0, I)
   l <- rep(0, I)
   for (i in 1:I) {
